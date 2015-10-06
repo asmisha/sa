@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-sm-12">
+        <form fs-form-for="" model="patient" novalidate ng-submit="submit()" name="patientForm">
+            <fieldset class="form-horizontal">
+                <legend ng-if="mode == 'create'">Create New Patient</legend>
+                <legend ng-if="mode == 'edit'">Edit Patient</legend>
+
+                <div ng-class="{'has-error': patientForm.$submitted && patientForm.firstName.$error.required}">
+                    <fs-input as="text" name="firstName" required label="First Name" ng-class="{asd: true}"></fs-input>
+                </div>
+
+                <div ng-class="{'has-error': patientForm.$submitted && patientForm.lastName.$error.required}">
+                    <fs-input as="text" name="lastName" required label="Last Name"></fs-input>
+                </div>
+
+                <fs-input as="text" name="dob" label="DOB"></fs-input>
+
+                <fs-row label="Gender">
+                    <div fs-select ng-model="patient.gender" items="['Male','Female']">{{ item }}</div>
+                </fs-row>
+
+                <fs-input as="text" name="address" label="Address"></fs-input>
+                <fs-input as="text" name="phoneNumber" label="Phone Number"></fs-input>
+
+                <div ng-class="{'has-error': patientForm.$submitted && patientForm.email.$error.required}">
+                    <fs-input as="email" name="email" required label="Email"></fs-input>
+                </div>
+            </fieldset>
+
+            <button type="submit" class="btn btn-success">Save</button>
+            <a class="btn btn-danger" ui-sref="patient_list">Cancel</a>
+        </form>
+    </div>
+</div>

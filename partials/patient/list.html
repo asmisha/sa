@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table">
+            <thead>
+            <tr>
+                <th><a href ng-click="setSort('id')">Id</a></th>
+                <th><a href ng-click="setSort('firstName')">First Name</a></th>
+                <th><a href ng-click="setSort('lastName')">Last Name</a></th>
+                <th><a href ng-click="setSort('dob')">DOB</a></th>
+                <th><a href ng-click="setSort('gender')">Gender</a></th>
+                <th><a href ng-click="setSort('address')">Address</a></th>
+                <th><a href ng-click="setSort('phoneNumber')">Phone Number</a></th>
+                <th><a href ng-click="setSort('email')">Email</a></th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="(k,u) in users|orderBy:sort track by $index">
+                <td>{{u.id}}</td>
+                <td>{{u.firstName}}</td>
+                <td>{{u.lastName}}</td>
+                <td>{{u.dob}}</td>
+                <td>{{u.gender}}</td>
+                <td>{{u.address}}</td>
+                <td>{{u.phoneNumber}}</td>
+                <td>{{u.email}}</td>
+                <td>
+                    <a class="btn btn-success" ui-sref="patient_edit({id:u.id})">Edit</a>
+                    <a class="btn btn-danger" ng-click="deletePatient(u.id)">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a class="btn btn-success" ui-sref="patient_create">Add patient</a>
+    </div>
+</div>
